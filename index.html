@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Weltatlas Quiz</title>
+<meta name="description" content="Geografie-Quiz mit 3D-Globus: Hauptstädte, Flaggen, Länder und Städte finden – mit Lernmodus, Statistik und Erfolgen.">
+<meta name="theme-color" content="#FBFCFB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14212A" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="GeoQuiz">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <header class="top"><div class="in gut">
+    <div class="brand"><img src="icons/icon-192.png" alt="" width="30" height="30" class="brandicon"><span id="appname">Weltatlas Quiz</span></div>
+    <div class="meta" id="topmeta"></div>
+  </div></header>
+  <main id="main"></main>
+  <nav class="tabs" aria-label="Navigation"><div class="in gut" id="tabs"></div></nav>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/lib/d3.min.js"></script>
+<script src="js/lib/topojson-client.min.js"></script>
+<script src="js/lib/three.min.js"></script>
+<script src="js/countries.js"></script>
+<script src="js/earth.js"></script>
+<script src="js/app.js"></script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))</script>
+</body>
+</html>
