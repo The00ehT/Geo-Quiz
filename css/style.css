@@ -389,6 +389,11 @@ details.moreinfo>summary .chev{color:var(--accent)}
 .tchip.up{background:color-mix(in srgb,#2e9d5b 18%,transparent);color:#2e9d5b}
 .tchip.down{background:color-mix(in srgb,#d0473c 16%,transparent);color:#d0473c}
 svg.chart.mini{display:block;width:100%;height:auto;margin-top:4px}
+.tmh .tmn{color:var(--muted);font-size:11.5px;font-weight:500;flex:none}
+.tmleg{display:flex;gap:12px;font-size:11px;color:var(--muted);padding:0 0 4px 38px;flex-wrap:wrap}
+.tmleg span{display:inline-flex;align-items:center;gap:5px}
+.tmleg .ln{width:14px;height:0;border-top:2.6px solid var(--mc);display:inline-block}
+.tmleg .ln.thin{border-top-width:1.2px;opacity:.6}
 .tmempty{color:var(--muted);font-size:13px;padding:22px 0 18px;text-align:center}
 .sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 @media (max-width:640px){.sgrid{grid-template-columns:1fr}}
