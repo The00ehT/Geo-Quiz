@@ -1,83 +1,72 @@
-# Weltatlas Quiz (GeoQuiz)
+World Atlas Quiz (GeoQuiz)
 
-Ein Geografie-Quiz im Browser mit 3D-Globus. Du übst Hauptstädte, Flaggen und die Lage von Ländern und Städten, lernst im Atlas und mit Karteikarten und siehst deinen Fortschritt in einer ausführlichen Statistik.
+A geography quiz in your browser featuring a 3D globe. Practice capitals, flags, and the locations of countries and cities. Learn with an interactive atlas and flashcards, and track your progress with detailed statistics.
 
-## Funktionen
+### ▶ [Play now](https://the00eht.github.io/Geo-Quiz/)
 
-- **Vier Spielmodi:** Hauptstädte, Flaggen, Länder finden, Städte finden. Jede Runde hat 10 Fragen, auf „Leicht“ (Auswahl) oder „Schwer“ (freie Eingabe).
-- **3D-Globus und flache Karte:** umschaltbar, mit Markierung, Bestätigen-Knopf und Auflösung per Kamerafahrt.
-- **Hinweise:** pro Frage bis zu zwei, mit Punktabzug.
-- **Lernen:** Atlas mit Länderinfos (Einwohner, Sprachen nach Verbreitung sortiert, Währung mit Kurs zum Euro, Nachbarländer …) und Karteikarten mit Fächer-System.
-- **Statistik:** Wissenskarte auf dem Globus, Genauigkeit nach Kontinent, Netzdiagramm, Verlauf getrennt nach Spielmodus, Entfernungsverlauf je Kartenmodus, Histogramm, Bestwerte, „Schwächen üben“.
-- **Offline nutzbar:** Nach dem ersten Öffnen speichert die App alle Dateien (inklusive Flaggen, Karte und Globus) auf dem Gerät und läuft danach auch ohne Internet.
-- **200 Länder und Gebiete:** alle UN-Staaten, dazu Vatikan, Grönland, Taiwan, Kosovo, Palästina, Westsahara und Somaliland. Im Lernen-Tab zeigt ein farbiger Punkt, ob ein Land allgemein anerkannt ist; in den Einstellungen lassen sich umstrittene und autonome Gebiete aus dem Spiel ausschließen.
-- **Erfolge, Deutsch/Englisch, Hell/Dunkel/System.**
-- **CSV-Export und -Import** der Statistik in den Einstellungen.
+No download, no account required. Works in any browser. Available in English and German.
 
-## Auf GitHub Pages veröffentlichen
+## Features
 
-1. Auf GitHub ein neues Repository anlegen, z. B. `geoquiz`.
-2. Den **Inhalt** dieses Ordners ins Repository hochladen, sodass `index.html` direkt im Hauptverzeichnis liegt (nicht in einem Unterordner). Am einfachsten: auf der Repository-Seite **Add file → Upload files** und alle Dateien und Ordner hineinziehen. Die versteckte Datei `.nojekyll` muss mit hochgeladen werden.
-3. **Settings → Pages** öffnen, unter **Build and deployment** die Quelle **Deploy from a branch** wählen, Branch `main` und Ordner `/ (root)`, dann **Save**.
-4. Nach ein bis zwei Minuten ist die Seite unter `https://DEIN-NAME.github.io/geoquiz/` erreichbar.
+- **Four game modes:** Capitals, Flags, Find Countries, and Find Cities. Each round consists of 10 questions, with two difficulty levels: "Easy" (multiple choice) and "Hard" (free input).
+- **3D globe and flat map:** Switch between both views, place markers, confirm your answers, and reveal the correct location with an animated camera flight.
+- **Hints:** Up to two hints per question, each with a point penalty.
+- **Learning:** An atlas with country information (population, languages sorted by prevalence, currency with exchange rates against the euro, neighboring countries, etc.) and flashcards with a spaced-repetition box system.
+- **Statistics:** Knowledge map on the globe, accuracy by continent, radar chart, progress over time broken down by game mode, distance history for each map mode, histogram, personal bests, and a "Practice Weak Areas" feature.
+- **Works offline:** After the first visit, the app saves all files (including flags, maps, and the globe) to your device and works without an internet connection.
+- **Achievements, English/German, Light/Dark/System themes.**
+- **CSV export and import** of statistics in the settings.
 
-Alle Pfade sind relativ, die App funktioniert also auch in einem Unterordner wie `/geoquiz/`.
+## Install as an App
 
-## Lokal testen
+- **iPhone / iPad (Safari):** Open the website → Tap the Share icon → Select **Add to Home Screen**. The app will then launch in full-screen mode with the GeoQuiz icon.
+- **Mac (Safari, macOS Sonoma or later):** Open the website → Select **File → Add to Dock** from the menu.
+- **Android / Chrome / Edge:** Open the browser menu → Select **Install app** or **Add to Home screen**.
 
-Die Seite lädt Kartendaten und Texturen nach, deshalb funktioniert ein Doppelklick auf `index.html` nicht. Der Offline-Speicher (Service Worker) läuft nur über `https://` oder `localhost`. Starte im Ordner einen kleinen Webserver:
+## Data and Storage
 
-```bash
-python3 -m http.server 8000
+Your progress is stored only in the browser on the respective device (`localStorage`). There is no server and no account.
+
+To back up your data or transfer it to another device, use **Settings → Statistics Data → Export CSV / Import CSV**.
+
+Note: An app installed from GitHub Pages has its own separate storage. To transfer progress from another version (e.g. the preview in Claude), use the CSV export/import feature.
+
+## Project Structure
+
+```text
+index.html              Page and app framework
+css/style.css           Styling (colors, layout, light/dark themes)
+js/countries.js         Country data (names, capitals, coordinates, facts)
+js/earth.js              3D globe and map (three.js)
+js/app.js                Game, learning, statistics, settings
+js/lib/                  three.js, d3, topojson-client
+                         (stored locally for offline use)
+sw.js                    Service Worker: caches the app for offline use
+world.json               Country borders (TopoJSON)
+tex/                     Earth textures (satellite imagery,
+                         relief, ocean mask, clouds)
+flags/                   Flags as SVG files
+icons/, favicon.ico      App icons
+manifest.webmanifest     App metadata for "Add to Home Screen"
+.nojekyll                Ensures GitHub Pages serves files unchanged
 ```
 
-Dann `http://localhost:8000` im Browser öffnen.
+The libraries [three.js](https://threejs.org) 0.149 (MIT), [d3](https://d3js.org) 7.8.5 (ISC), and [topojson-client](https://github.com/topojson/topojson-client) (ISC) are located in the `js/lib` folder.
 
-## Als App installieren
+The only resources loaded from the internet are fonts (Google Fonts) and current exchange rates. When offline, the app uses the most recently downloaded or bundled values.
 
-- **iPhone / iPad (Safari):** Seite öffnen → Teilen-Symbol → **Zum Home-Bildschirm**. Die App startet dann im Vollbild mit dem GeoQuiz-Icon.
-- **Mac (Safari ab macOS Sonoma):** Seite öffnen → Menü **Ablage → Zum Dock hinzufügen**.
-- **Android / Chrome / Edge:** Browser-Menü → **App installieren** bzw. **Zum Startbildschirm hinzufügen**.
+**After an update:** When you upload new files, the app automatically downloads them the next time it is opened with an internet connection. If the old version persists, completely close the app and reopen it.
 
-## Daten und Speicherung
+## Sources and Licenses
 
-Dein Fortschritt wird nur im Browser des jeweiligen Geräts gespeichert (`localStorage`). Es gibt keinen Server und kein Konto. Um Daten zu sichern oder auf ein anderes Gerät zu übertragen, nutze **Einstellungen → Statistik-Daten → CSV exportieren / importieren**.
+- **Country borders:** [world-atlas](https://github.com/topojson/world-atlas) (ISC), based on [Natural Earth](https://www.naturalearthdata.com) (public domain)
+- **Flags:** [flag-icons](https://github.com/lipis/flag-icons) (MIT)
+- **Country names, languages, currencies, neighboring countries, area:** [mledoze/countries](https://github.com/mledoze/countries) (ODbL 1.0)
+- **Population, GDP, time zones, calling codes:** [Countries States Cities Database](https://github.com/dr5hn/countries-states-cities-database) (ODbL 1.0)
+- **Capital city coordinates:** [capitals-coordinates](https://github.com/Ginden/capitals) (WTFPL); individual values have been corrected where necessary
+- **Earth satellite imagery, relief, and ocean mask:** NASA Visible Earth "Blue Marble" (public domain; NASA images are not subject to copyright), in the processed version from [three-globe](https://github.com/vasturiano/three-globe) (MIT)
+- **Cloud texture:** Generated specifically for this app using a noise function; free to use
+- **Language prevalence data for sorting languages:** [Unicode CLDR](https://cldr.unicode.org) (Unicode License)
+- **Exchange rates:** [fawazahmed0/exchange-api](https://github.com/fawazahmed0/exchange-api) (CC0); one dataset is bundled and updated daily online
 
-Hinweis: Eine auf GitHub Pages installierte App hat einen eigenen Speicher. Fortschritt aus einer anderen Version (z. B. der Vorschau in Claude) überträgst du per CSV.
-
-## Aufbau
-
-```
-index.html             Seite und App-Gerüst
-css/style.css          Gestaltung (Farben, Layout, hell/dunkel)
-js/countries.js        Länderdaten (Namen, Hauptstädte, Koordinaten, Fakten)
-js/earth.js            3D-Globus und Karte (three.js)
-js/app.js              Spiel, Lernen, Statistik, Einstellungen
-js/lib/                three.js, d3, topojson-client (lokal, damit die App offline läuft)
-sw.js                  Service Worker: speichert die App für die Offline-Nutzung
-world.json             Ländergrenzen (TopoJSON)
-tex/                   Erd-Texturen (Satellitenbild, Relief, Ozeanmaske, Wolken)
-flags/                 Flaggen als SVG
-icons/, favicon.ico    App-Icons
-manifest.webmanifest   App-Angaben für „Zum Home-Bildschirm“
-.nojekyll              sorgt dafür, dass GitHub Pages die Dateien unverändert ausliefert
-```
-
-Die Bibliotheken [three.js](https://threejs.org) 0.149 (MIT), [d3](https://d3js.org) 7.8.5 (ISC) und [topojson-client](https://github.com/topojson/topojson-client) (ISC) liegen im Ordner `js/lib`. Aus dem Netz kommen nur die Schriften (Google Fonts) und die aktuellen Wechselkurse; ohne Internet nutzt die App die zuletzt geladenen bzw. mitgelieferten Werte.
-
-**Nach einem Update:** Lädst du neue Dateien hoch, holt sich die App sie beim nächsten Öffnen mit Internet automatisch. Bei hartnäckig alter Version die App einmal ganz schließen und neu öffnen.
-
-## Quellen und Lizenzen
-
-- Ländergrenzen: [world-atlas](https://github.com/topojson/world-atlas) (ISC) auf Basis von [Natural Earth](https://www.naturalearthdata.com) (gemeinfrei)
-- Flaggen: [flag-icons](https://github.com/lipis/flag-icons) (MIT); Flagge von Somaliland für diese App selbst gezeichnet
-- Kosovo und Somaliland haben in den Kartendaten keinen ISO-Code und bekommen intern die IDs 901 und 902. Die Grenze zwischen Marokko und Westsahara wurde entlang des 27°40′ N nachgezogen.
-- Ländernamen, Sprachen, Währungen, Nachbarländer, Fläche: [mledoze/countries](https://github.com/mledoze/countries) (ODbL 1.0)
-- Einwohner, BIP, Zeitzonen, Vorwahlen: [Countries States Cities Database](https://github.com/dr5hn/countries-states-cities-database) (ODbL 1.0)
-- Koordinaten der Hauptstädte: [capitals-coordinates](https://github.com/Ginden/capitals) (WTFPL), einzelne Werte korrigiert
-- Erd-Satellitenbild, Relief und Ozeanmaske: NASA Visible Earth „Blue Marble“ (gemeinfrei, NASA-Bilder unterliegen keinem Urheberrecht), in der aufbereiteten Fassung aus [three-globe](https://github.com/vasturiano/three-globe) (MIT)
-- Wolken-Textur: eigens für diese App per Rauschfunktion erzeugt, frei verwendbar
-- Sprachverbreitung zum Sortieren der Sprachen: [Unicode CLDR](https://cldr.unicode.org) (Unicode-Lizenz)
-- Wechselkurse: [fawazahmed0/exchange-api](https://github.com/fawazahmed0/exchange-api) (CC0), ein Stand ist mitgeliefert und wird online täglich aktualisiert
-
-Die Länderdaten unter ODbL wurden für diese App zusammengeführt und gekürzt. Wer sie weiterverwendet, nennt bitte die Quellen oben.
+The country data licensed under ODbL has been consolidated and abridged for this app. If you reuse this data, please credit the sources listed above.
