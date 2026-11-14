@@ -1,5 +1,5 @@
 /* Weltatlas Quiz – Service Worker: macht die App nach dem ersten Besuch offline nutzbar */
-const VER='geoquiz-814dc69009';
+const VER='geoquiz-7e7dca21a6';
 const PRECACHE=[
 "./",
 "css/style.css",
