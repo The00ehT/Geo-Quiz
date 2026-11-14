@@ -290,7 +290,9 @@ details[open]>summary .chev{transform:rotate(180deg)}
 .check input:checked+.cbox{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .check input:focus-visible+.cbox{outline:2px solid var(--accent);outline-offset:2px}
 .check .cl{flex:1;min-width:0;font-weight:500;font-size:14px}
-.check .cnt{color:var(--muted);font-size:12px;margin-left:4px}
+.check .cnt{color:var(--muted);font-size:12px;margin-left:4px;flex:none}
+.check .cl{overflow-wrap:break-word}
+@media (max-width:420px){.check{gap:8px;padding:9px 10px}.check .cl{font-size:13.5px}.check .cnt{margin-left:0}}
 .check:has(input:checked){border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
 .cardhead{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center}
 .flash-in{min-height:clamp(220px,42vh,330px)}
@@ -394,6 +396,11 @@ svg.chart.mini{display:block;width:100%;height:auto;margin-top:4px}
 .tmleg span{display:inline-flex;align-items:center;gap:5px}
 .tmleg .ln{width:14px;height:0;border-top:2.6px solid var(--mc);display:inline-block}
 .tmleg .ln.thin{border-top-width:1.2px;opacity:.6}
+.recb{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink);background:var(--surface-2);border-radius:999px;padding:2px 9px 2px 7px;margin-top:4px;white-space:nowrap}
+.recb i,.recd i,.recdot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none}
+.recdot{margin-left:-4px}
+dd.recd{display:flex;gap:8px;align-items:baseline;font-weight:500;font-size:14px}
+.face .recb{margin-top:2px}
 .tmempty{color:var(--muted);font-size:13px;padding:22px 0 18px;text-align:center}
 .sgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 @media (max-width:640px){.sgrid{grid-template-columns:1fr}}

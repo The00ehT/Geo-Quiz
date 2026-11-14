@@ -1,5 +1,5 @@
 /* Weltatlas Quiz – Service Worker: macht die App nach dem ersten Besuch offline nutzbar */
-const VER='geoquiz-7e7dca21a6';
+const VER='geoquiz-596ee036b3';
 const PRECACHE=[
 "./",
 "css/style.css",
@@ -55,6 +55,7 @@ const PRECACHE=[
 "flags/ec.svg",
 "flags/ee.svg",
 "flags/eg.svg",
+"flags/eh.svg",
 "flags/er.svg",
 "flags/es.svg",
 "flags/et.svg",
@@ -145,6 +146,7 @@ const PRECACHE=[
 "flags/ph.svg",
 "flags/pk.svg",
 "flags/pl.svg",
+"flags/ps.svg",
 "flags/pt.svg",
 "flags/pw.svg",
 "flags/py.svg",
@@ -195,6 +197,8 @@ const PRECACHE=[
 "flags/vn.svg",
 "flags/vu.svg",
 "flags/ws.svg",
+"flags/xk.svg",
+"flags/xs.svg",
 "flags/ye.svg",
 "flags/za.svg",
 "flags/zm.svg",
