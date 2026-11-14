@@ -1,4 +1,4 @@
-#World Atlas Quiz (GeoQuiz)
+# World Atlas Quiz (GeoQuiz)
 
 A geography quiz in your browser featuring a 3D globe. Practice capitals, flags, and the locations of countries and cities. Learn with an interactive atlas and flashcards, and track your progress with detailed statistics.
 
